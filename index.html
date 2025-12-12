@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky Tech - Solar Energy Solutions</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Poppins, sans-serif;
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #111;
+        color: #eee;
+      }
+      header {
+        background: #000;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      header h1 {
+        color: #eee;
+        font-size: 24px;
+      }
+      nav a {
+        margin: 0 20px;
+        color: #eee;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+      nav a:hover {
+        color: lightblue;
+      }
+
+      .hero {
+        height: 90vh;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #111),
+          url('https://source.unsplash.com/1600x900/?solar,energy') center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        animation: slideUp 1.5s ease;
+      }
+      .hero p {
+        margin-top: 10px;
+        opacity: 0.9;
+        font-size: 20px;
+      }
+
+      .btn {
+        background: grey;
+        padding: 12px 28px;
+        border-radius: 6px;
+        display: inline-block;
+        margin-top: 20px;
+        color: #000;
+        transition: 0.4s;
+        font-weight: 600;
+      }
+      .btn:hover {
+        background: lightblue;
+        transform: scale(1.08);
+      }
+
+      section {
+        padding: 60px 100px;
+        text-align: center;
+      }
+      h2.section-title {
+        color: lightblue;
+        font-size: 2.4rem;
+        margin-bottom: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+      .card {
+        background: #1b1b1b;
+        padding: 25px;
+        border-radius: 10px;
+        text-align: center;
+        border: 1px solid #222;
+        transition: 0.4s;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: revealUp 1s forwards;
+      }
+      .card i {
+        font-size: 40px;
+        color: lightblue;
+        margin-bottom: 15px;
+      }
+
+      .card:hover {
+        transform: translateY(-10px) scale(1.05);
+        background: #222;
+        border-color: lightblue;
+      }
+
+      footer {
+        background: #000;
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        margin-top: 20px;
+        opacity: 0.9;
+      }
+
+      .hero {
+        position: relative;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      /* Blurred Image Background */
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('attachment:Unnamed') center/cover no-repeat;
+        filter: blur(6px) brightness(0.55);
+        z-index: 1;
+      }
+
+      /* Hero Text */
+      .hero h1,
+      .hero p,
+      .hero a {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Animations */
+      @keyframes slideRight {
+        0% {
+          transform: translateX(-120px);
+          opacity: 0;
+        }
+        60% {
+          transform: translateX(8px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      .slide-name {
+        display: inline-block;
+        animation: slideRight 1.2s ease-out forwards;
+      }
+      @keyframes textReveal {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-text {
+        animation: textReveal 2s ease-in-out infinite;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes revealUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Form Styles */
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+      }
+      form button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="slide-name">Sky Tech</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div>
+        <!-- <h1 class="animate-text">Powering the Future with Solar Energy</h1>
+  <p>Clean • Renewable • Efficient</p>
+  <a href="#contact" class="btn">Get Quote</a> -->
+        <section class="hero" id="home">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h1 class="animate-text">Powering the Future with Solar Energy</h1>
+            <p>Clean • Renewable • Efficient</p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <p>
+        We deliver commercial and residential solar power solutions with
+        automated cleaning and monitoring systems.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2 class="section-title">Our Services</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fa-solid fa-solar-panel"></i> Solar Panel Installation
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-gears"></i> System Design & Engineering
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-chart-line"></i> Remote Monitoring & Analytics
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-broom"></i> Automatic Cleaning Technology
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-industry"></i> Commercial Solar Solutions
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-home"></i> Residential Solar Solutions
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <h2 class="section-title">Our Products</h2>
+      <div class="grid">
+        <div class="card">Solar PV Modules - Adani, Vikram, Waaree, Tata</div>
+        <div class="card">Solar Inverters - Microtek, Luminous, Havells</div>
+        <div class="card">Solar Batteries - Exide, Okaya, Amaron</div>
+      </div>
+    </section>
+
+    <!-- Updated Contact / Get Quote Form -->
+    <section id="contact">
+      <h2 class="section-title">Get a Quote</h2>
+      <form action="https://formspree.io/f/xldqwren" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="phone" placeholder="Your Phone" required />
+        <textarea
+          name="message"
+          placeholder="Your Requirements"
+          rows="4"
+          required
+        ></textarea>
+        <button type="submit" class="btn" style="width: 100%">Submit</button>
+      </form>
+      <p style="margin-top: 10px; opacity: 0.8">
+        We will contact you within 24 hours.
+      </p>
+    </section>
+
+    <footer>© 2025 SolarTech | All Rights Reserved</footer>
+
+    <script>
+      // Optional: show confirmation alert
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        }).then((response) => {
+          if (response.ok) {
+            alert('Thank you! Your request has been sent.');
+            form.reset();
+          } else {
+            alert('Oops! There was a problem submitting your form.');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
