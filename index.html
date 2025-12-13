@@ -1,294 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sky Tech - Solar Energy Solutions</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky Tech - Solar Energy Solutions</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Poppins, sans-serif;
-}
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+      }
+      body {
+        background: #111;
+        color: #eee;
+      }
 
-body {
-  background: #111;
-  color: #eee;
-}
+      /* HEADER */
+      header {
+        background: #000;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      header h1 {
+        font-size: 22px;
+      }
+      nav {
+        display: flex;
+        gap: 20px;
+      }
+      nav a {
+        color: #eee;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        transition: 0.3s;
+      }
+      nav a:hover {
+        color: lightblue;
+      }
+      .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
 
-/* ================= HEADER ================= */
-header {
-  background: #000;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+      @media (max-width: 768px) {
+        nav {
+          position: absolute;
+          top: 60px;
+          right: 0;
+          background: #000;
+          flex-direction: column;
+          width: 240px;
+          display: none;
+          border-left: 1px solid #222;
+        }
+        nav.active {
+          display: flex;
+        }
+        nav a {
+          border-bottom: 1px solid #222;
+        }
+        .menu-toggle {
+          display: block;
+        }
+      }
 
-header h1 {
-  font-size: 22px;
-}
+      /* HERO */
+      .hero {
+        height: 90vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), #111),
+          url('https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg')
+            center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+      .hero p {
+        margin-top: 10px;
+        font-size: 18px;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        background: lightblue;
+        color: #000;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+      }
 
-nav {
-  display: flex;
-  gap: 20px;
-}
+      /* SECTIONS */
+      section {
+        padding: 70px 20px;
+        text-align: center;
+      }
+      .section-title {
+        color: lightblue;
+        margin-bottom: 25px;
+        font-size: 2.2rem;
+      }
 
-nav a {
-  color: #eee;
-  text-decoration: none;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px;
-}
+      /* GRID FIX */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+        max-width: 1100px;
+        margin: auto;
+        align-items: start;
+      }
 
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-}
+      /* CARD */
+      .card {
+        background: #1b1b1b;
+        padding: 20px;
+        border-radius: 12px;
+        cursor: pointer;
+        border: 1px solid #222;
+        transition: 0.3s;
+      }
+      .card:hover {
+        border-color: lightblue;
+      }
+      .card h3 {
+        color: lightblue;
+        margin-bottom: 10px;
+      }
+      .card-content {
+        display: none;
+        margin-top: 15px;
+      }
+      .card.active .card-content {
+        display: block;
+      }
+      .card img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
 
-@media (max-width: 768px) {
-  nav {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #000;
-    flex-direction: column;
-    width: 240px;
-    display: none;
-    border-left: 1px solid #222;
-  }
+      /* ABOUT */
+      .about-box {
+        max-width: 900px;
+        margin: auto;
+        background: #1b1b1b;
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid #222;
+      }
+      .about-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+      .about-item i {
+        font-size: 30px;
+        color: lightblue;
+        margin-bottom: 10px;
+      }
 
-  nav.active {
-    display: flex;
-  }
+      /* CONTACT */
+      .contact-box {
+        max-width: 600px;
+        margin: auto;
+        background: #1b1b1b;
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid #222;
+      }
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: none;
+      }
+      .contact-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .contact-actions a {
+        flex: 1;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        color: #000;
+      }
+      .whatsapp {
+        background: #25d366;
+      }
+      .call {
+        background: lightblue;
+      }
 
-  nav a {
-    border-bottom: 1px solid #222;
-  }
+      /* FOOTER */
+      footer {
+        background: #000;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
 
-  .menu-toggle {
-    display: block;
-  }
-}
+  <body>
+    <header>
+      <h1>Sky Tech</h1>
+      <i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
+      <nav id="nav">
+        <a href="#home" onclick="closeMenu()"
+          ><i class="fa fa-house"></i> Home</a
+        >
+        <a href="#about" onclick="closeMenu()"
+          ><i class="fa fa-circle-info"></i> About</a
+        >
+        <a href="#services" onclick="closeMenu()"
+          ><i class="fa fa-solar-panel"></i> Services</a
+        >
+        <a href="#products" onclick="closeMenu()"
+          ><i class="fa fa-box"></i> Products</a
+        >
+        <a href="#contact" onclick="closeMenu()"
+          ><i class="fa fa-phone"></i> Contact</a
+        >
+      </nav>
+    </header>
 
-/* ================= HERO ================= */
-.hero {
-  height: 90vh;
-  background: linear-gradient(rgba(0,0,0,.6), #111),
-    url("https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg") center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 2.6rem;
-}
-
-.hero p {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-.btn {
-  margin-top: 20px;
-  background: lightblue;
-  color: #000;
-  padding: 12px 25px;
-  border-radius: 6px;
-  font-weight: 600;
-  display: inline-block;
-  text-decoration: none;
-}
-
-/* ================= SECTIONS ================= */
-section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.section-title {
-  color: lightblue;
-  margin-bottom: 20px;
-  font-size: 2.2rem;
-}
-
-/* ✅ GRID FIX */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 25px;
-  max-width: 1100px;
-  margin: auto;
-  align-items: start;
-}
-
-/* ✅ DESKTOP LAYOUT */
-@media (min-width: 769px) {
-  #services .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  #products .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ================= CARD ================= */
-.card {
-  background: #1b1b1b;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: 1px solid #222;
-}
-
-.card h3 {
-  color: lightblue;
-}
-
-.card-content {
-  display: none;
-  margin-top: 15px;
-}
-
-.card.active .card-content {
-  display: block;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-/* ================= FORM ================= */
-form {
-  max-width: 500px;
-  margin: auto;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: none;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  background: #000;
-  padding: 20px;
-  text-align: center;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>Sky Tech</h1>
-  <i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
-
-  <nav id="nav">
-    <a href="#home" onclick="closeMenu()">Home</a>
-    <a href="#about" onclick="closeMenu()">About</a>
-    <a href="#services" onclick="closeMenu()">Services</a>
-    <a href="#products" onclick="closeMenu()">Products</a>
-    <a href="#contact" onclick="closeMenu()">Contact</a>
-  </nav>
-</header>
-
-<section class="hero" id="home">
-  <div>
-    <h1>Powering the Future with Solar Energy</h1>
-    <p>Clean • Renewable • Efficient</p>
-    <a href="#contact" class="btn">Get Quote</a>
-  </div>
-</section>
-
-<section id="services">
-  <h2 class="section-title">Our Services</h2>
-  <div class="grid">
-    <div class="card" data-group="services" onclick="toggleCard(this)">
-      <h3>Solar Installation</h3>
-      <div class="card-content">
-        <img src="https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg">
-        <p>Complete rooftop & ground mounted installations.</p>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <h1>Powering the Future with Solar Energy</h1>
+        <p>Clean • Renewable • Efficient</p>
+        <a href="#contact" class="btn">Get Quote</a>
       </div>
-    </div>
+    </section>
 
-    <div class="card" data-group="services" onclick="toggleCard(this)">
-      <h3>Monitoring</h3>
-      <div class="card-content">
-        <img src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg">
-        <p>Remote monitoring & analytics.</p>
+    <!-- ABOUT (FROM YOUR CONTENT, IMPROVED UI) -->
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <div class="about-box">
+        <p>
+          We provide residential & commercial solar power solutions with high
+          efficiency systems.
+        </p>
+
+        <div class="about-features">
+          <div class="about-item">
+            <i class="fa fa-sun"></i>
+            <h4>Clean Energy</h4>
+            <p>Eco-friendly renewable power</p>
+          </div>
+          <div class="about-item">
+            <i class="fa fa-bolt"></i>
+            <h4>High Efficiency</h4>
+            <p>Maximum output systems</p>
+          </div>
+          <div class="about-item">
+            <i class="fa fa-industry"></i>
+            <h4>Residential & Commercial</h4>
+            <p>Homes, offices & industries</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="products">
-  <h2 class="section-title">Our Products</h2>
-  <div class="grid">
-    <div class="card" data-group="products" onclick="toggleCard(this)">
-      <h3>Solar Panels</h3>
-      <div class="card-content">
-        <img src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg">
-        <p>Adani, Waaree, Tata, Vikram.</p>
+    <!-- SERVICES -->
+    <section id="services">
+      <h2 class="section-title">Our Services</h2>
+      <div class="grid">
+        <div class="card" data-group="services" onclick="toggleCard(this)">
+          <h3>Solar Installation</h3>
+          <div class="card-content">
+            <img
+              src="https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg"
+            />
+            <p>Complete rooftop & ground mounted installations.</p>
+          </div>
+        </div>
+
+        <div class="card" data-group="services" onclick="toggleCard(this)">
+          <h3>Monitoring</h3>
+          <div class="card-content">
+            <img
+              src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg"
+            />
+            <p>Remote monitoring & performance analytics.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card" data-group="products" onclick="toggleCard(this)">
-      <h3>Solar Inverters</h3>
-      <div class="card-content">
-        <img src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg">
-        <p>Luminous, Microtek, Havells.</p>
+    <!-- PRODUCTS -->
+    <section id="products">
+      <h2 class="section-title">Our Products</h2>
+      <div class="grid">
+        <div class="card" data-group="products" onclick="toggleCard(this)">
+          <h3>Solar Panels</h3>
+          <div class="card-content">
+            <img
+              src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg"
+            />
+            <p>High efficiency PV modules – Adani, Waaree, Tata, Vikram.</p>
+          </div>
+        </div>
+
+        <div class="card" data-group="products" onclick="toggleCard(this)">
+          <h3>Solar Inverters</h3>
+          <div class="card-content">
+            <img
+              src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg"
+            />
+            <p>On-grid & off-grid inverters – Luminous, Microtek, Havells.</p>
+          </div>
+        </div>
+
+        <div class="card" data-group="products" onclick="toggleCard(this)">
+          <h3>Solar Batteries</h3>
+          <div class="card-content">
+            <img
+              src="https://images.pexels.com/photos/4492135/pexels-photo-4492135.jpeg"
+            />
+            <p>Long backup tubular batteries – Exide, Okaya, Amaron.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card" data-group="products" onclick="toggleCard(this)">
-      <h3>Solar Batteries</h3>
-      <div class="card-content">
-        <img src="https://images.pexels.com/photos/4492135/pexels-photo-4492135.jpeg">
-        <p>Exide, Okaya, Amaron.</p>
+    <!-- CONTACT (FROM YOUR CODE, ENHANCED) -->
+    <section id="contact">
+      <h2 class="section-title">Get a Quote</h2>
+      <div class="contact-box">
+        <form action="https://formspree.io/f/xldqwren" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="text" name="phone" placeholder="Your Phone" required />
+          <textarea
+            name="message"
+            placeholder="Your Requirement"
+            rows="4"
+          ></textarea>
+          <button class="btn" style="width: 100%">Submit</button>
+        </form>
+
+        <!-- <div class="contact-actions">
+      <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp">WhatsApp</a>
+      <a href="tel:+91XXXXXXXXXX" class="call">Call Now</a>
+    </div> -->
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>© 2025 Sky Tech</footer>
+    <footer>© 2025 Sky Tech | All Rights Reserved</footer>
 
-<script>
-function toggleMenu() {
-  document.getElementById("nav").classList.toggle("active");
-}
-
-function closeMenu() {
-  document.getElementById("nav").classList.remove("active");
-}
-
-function toggleCard(card) {
-  const group = card.dataset.group;
-  document.querySelectorAll(`.card[data-group="${group}"]`)
-    .forEach(c => c !== card && c.classList.remove("active"));
-  card.classList.toggle("active");
-}
-</script>
-
-</body>
+    <script>
+      function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+      }
+      function closeMenu() {
+        document.getElementById('nav').classList.remove('active');
+      }
+      function toggleCard(selected) {
+        const group = selected.getAttribute('data-group');
+        document
+          .querySelectorAll(`.card[data-group="${group}"]`)
+          .forEach((card) => {
+            if (card !== selected) card.classList.remove('active');
+          });
+        selected.classList.toggle('active');
+      }
+    </script>
+  </body>
 </html>
