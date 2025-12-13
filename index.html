@@ -91,6 +91,7 @@ nav a.active {
     0 10px 24px rgba(0, 255, 153, 0.4),
     inset 0 0 0 1px rgba(0, 255, 153, 0.45);
 }
+
 nav a i {
   font-size: 15px;
   opacity: 0.9;
@@ -126,6 +127,22 @@ nav a i {
       @media (min-width: 1200px) {
   nav {
     max-width: 800px;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px 18px;
+    max-width: 900px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  nav a {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -534,38 +551,39 @@ nav a i {
   </div>
       <i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
       <nav id="nav">
-      <a href="#home" class="active" onclick="closeMenu()">
+      <a href="#home" class="active" onclick="setActive(this); closeMenu()">
         <i class="fa fa-house"></i> Home
       </a>
     
-      <a href="#about" onclick="closeMenu()">
+      <a href="#about" onclick="setActive(this); closeMenu()">
         <i class="fa fa-circle-info"></i> About
       </a>
     
-      <a href="#services" onclick="closeMenu()">
+      <a href="#services" onclick="setActive(this); closeMenu()">
         <i class="fa fa-solar-panel"></i> Services
       </a>
     
-      <a href="#products" onclick="closeMenu()">
+      <a href="#products" onclick="setActive(this); closeMenu()">
         <i class="fa fa-box"></i> Products
       </a>
     
-      <a href="#site-gallery" onclick="closeMenu()">
+      <a href="#site-gallery" onclick="setActive(this); closeMenu()">
         <i class="fa fa-images"></i> Site Installations
       </a>
     
-      <a href="#hybrid-inverter" onclick="closeMenu()">
+      <a href="#hybrid-inverter" onclick="setActive(this); closeMenu()">
         <i class="fa fa-plug"></i> Hybrid Inverter
       </a>
     
-      <a href="#calculator" onclick="closeMenu()">
+      <a href="#calculator" onclick="setActive(this); closeMenu()">
         <i class="fa fa-calculator"></i> Solar Calculator
       </a>
     
-      <a href="#contact" onclick="closeMenu()">
+      <a href="#contact" onclick="setActive(this); closeMenu()">
         <i class="fa fa-phone"></i> Contact
       </a>
     </nav>
+    
     
     </header>
 
@@ -916,6 +934,16 @@ nav a i {
 
   selected.classList.toggle('active');
 }
+
+function setActive(clickedLink) {
+    const navLinks = document.querySelectorAll("#nav a");
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+    });
+
+    clickedLink.classList.add("active");
+  }
 
 let currentIndex = 0;
 
