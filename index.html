@@ -325,6 +325,41 @@
         border-color: #222;
       }
 
+      /* SITE GALLERY */
+.site-gallery {
+  padding: 60px 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+  gap: 16px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #222;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .gallery-grid img {
+    height: 150px;
+  }
+}
+
+
       /* CALCULATOR CARD WRAPPER */
 .calculator-wrapper {
   display: flex;
@@ -360,30 +395,129 @@
   }
 }
 
+/* LOGO */
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-box img {
+  height: 40px; /* logo size */
+  width: auto;
+}
+
+/* MOBILE LOGO SIZE */
+@media (max-width: 768px) {
+  .logo-box img {
+    height: 34px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+}
+
+/* CAROUSEL */
+.carousel-container {
+  position: relative;
+  max-width: 850px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-track img {
+  min-width: 50%; /* 2 images visible */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 8px;
+  border: 1px solid #222;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* NAV BUTTONS */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: lightblue;
+  font-size: 20px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.carousel-btn.left {
+  left: 5px;
+}
+
+.carousel-btn.right {
+  right: 5px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .carousel-track img {
+    min-width: 100%; /* 1 image on mobile */
+    height: 180px;
+  }
+}
+
+
+
     </style>
   </head>
 
   <body>
-    <header>
-      <h1>Sky Tech Power Solutions</h1>
+  <header>
+  <div class="logo-box">
+    <img src="Logo.jpeg" alt="Sky Tech Power Solutions Logo" />
+    <h1>Sky Tech Power Solutions</h1>
+  </div>
       <i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
       <nav id="nav">
-        <a href="#home" onclick="closeMenu()"
-          ><i class="fa fa-house"></i> Home</a
-        >
-        <a href="#about" onclick="closeMenu()"
-          ><i class="fa fa-circle-info"></i> About</a
-        >
-        <a href="#services" onclick="closeMenu()"
-          ><i class="fa fa-solar-panel"></i> Services</a
-        >
-        <a href="#products" onclick="closeMenu()"
-          ><i class="fa fa-box"></i> Products</a
-        >
-        <a href="#contact" onclick="closeMenu()"
-          ><i class="fa fa-phone"></i> Contact</a
-        >
-      </nav>
+      <a href="#home" onclick="closeMenu()">
+        <i class="fa fa-house"></i> Home
+      </a>
+    
+      <a href="#about" onclick="closeMenu()">
+        <i class="fa fa-circle-info"></i> About
+      </a>
+    
+      <a href="#services" onclick="closeMenu()">
+        <i class="fa fa-solar-panel"></i> Services
+      </a>
+    
+      <a href="#products" onclick="closeMenu()">
+        <i class="fa fa-box"></i> Products
+      </a>
+    
+      <a href="#site-gallery" onclick="closeMenu()">
+        <i class="fa fa-images"></i> Site Installations
+      </a>
+    
+      <a href="#hybrid-inverter" onclick="closeMenu()">
+        <i class="fa fa-plug"></i> Hybrid Inverter
+      </a>
+    
+      <a href="#calculator" onclick="closeMenu()">
+        <i class="fa fa-calculator"></i> Solar Calculator
+      </a>
+    
+      <a href="#contact" onclick="closeMenu()">
+        <i class="fa fa-phone"></i> Contact
+      </a>
+    </nav>
+    
     </header>
 
     <!-- HERO -->
@@ -564,16 +698,27 @@
       
     </section>
 
-    <section class="site-gallery">
+    <section id="site-gallery" class="site-gallery">
     <h2 class="section-title">Our Site Installations</h2>
   
-    <div class="gallery-grid">
-      <img src="image1.jpeg" alt="Solar site installation 1">
-      <img src="image2.jpeg" alt="Solar site installation 2">
-      <img src="image3.jpeg" alt="Solar site installation 3">
-      <img src="image4.jpeg" alt="Solar site installation 4">
+    <div class="carousel-container">
+      <button class="carousel-btn left" onclick="prevSlide()">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+  
+      <div class="carousel-track" id="carouselTrack">
+        <img src="image1.jpeg" alt="Solar site installation 1" />
+        <img src="image2.jpeg" alt="Solar site installation 2" />
+        <img src="image3.jpeg" alt="Solar site installation 3" />
+        <img src="image4.jpeg" alt="Solar site installation 4" />
+      </div>
+  
+      <button class="carousel-btn right" onclick="nextSlide()">
+        <i class="fa fa-chevron-right"></i>
+      </button>
     </div>
   </section>
+  
 
   <section id="hybrid-inverter">
   <h2 class="section-title">Working of Hybrid Solar Inverter</h2>
@@ -722,6 +867,44 @@
 
   selected.classList.toggle('active');
 }
+
+let currentIndex = 0;
+
+  function updateCarousel() {
+    const track = document.getElementById("carouselTrack");
+    const images = track.children;
+    const visibleCount = window.innerWidth <= 600 ? 1 : 2;
+    const imageWidth = images[0].offsetWidth + 16; // image + margin
+
+    track.style.transform = `translateX(-${
+      currentIndex * imageWidth
+    }px)`;
+  }
+
+  function nextSlide() {
+    const track = document.getElementById("carouselTrack");
+    const images = track.children;
+    const visibleCount = window.innerWidth <= 600 ? 1 : 2;
+
+    if (currentIndex < images.length - visibleCount) {
+      currentIndex++;
+      updateCarousel();
+    }
+  }
+
+  function prevSlide() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  }
+
+  window.addEventListener("resize", () => {
+    currentIndex = 0;
+    updateCarousel();
+  });
+
     </script>
   </body>
 </html>
+
