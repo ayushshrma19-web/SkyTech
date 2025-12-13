@@ -227,12 +227,86 @@
         font-size: 14px;
         opacity: 0.9;
       }
+
+      .solar-calculator {
+        background: linear-gradient(135deg, #111, #1b1b1b);
+        border: 1px solid #222;
+        padding: 25px;
+        border-radius: 14px;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .solar-calculator h3 {
+        color: lightblue;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .solar-calculator label {
+        font-size: 14px;
+        opacity: 0.85;
+      }
+
+      .solar-calculator input,
+      .solar-calculator select {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0 18px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        background: #000;
+        color: #fff;
+      }
+
+      .solar-calculator button {
+        width: 100%;
+        padding: 14px;
+        border-radius: 10px;
+        border: none;
+        background: lightblue;
+        color: #000;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .solar-calculator button:hover {
+        background: #8fd3ff;
+      }
+
+      .calc-result {
+        margin-top: 18px;
+        padding: 15px;
+        border-radius: 10px;
+        background: #0d1b22;
+        border: 1px solid #1f3a44;
+        font-size: 15px;
+      }
+
+      .calc-result span {
+        color: lightblue;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .calc-note {
+        font-size: 12px;
+        margin-top: 10px;
+        opacity: 0.6;
+        text-align: center;
+      }
+
+      .solar-calculator hr {
+        margin-top: 25px;
+        border-color: #222;
+      }
     </style>
   </head>
 
   <body>
     <header>
-      <h1>Sky Tech</h1>
+      <h1>Sky Tech Power Solutions</h1>
       <i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
       <nav id="nav">
         <a href="#home" onclick="closeMenu()"
@@ -322,7 +396,7 @@
       <h2 class="section-title">Our Products</h2>
       <div class="grid">
         <div class="card" data-group="products" onclick="toggleCard(this)">
-          <h3>Solar Panels</h3>
+          <h3>Solar PV Panels</h3>
           <div class="card-content">
             <img
               src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg"
@@ -350,8 +424,48 @@
             <p>Long backup tubular batteries – Exide, Okaya, Amaron.</p>
           </div>
         </div>
+
+        <div class="card" data-group="products" onclick="toggleCard(this)">
+        <h3>Solar Structures</h3>
+        <div class="card-content">
+          <img
+            src="https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg"
+            alt="Solar Mounting Structures"
+          />
+          <p>
+            Robust GI & aluminum mounting structures designed for rooftop and
+            ground-mounted solar plants. Engineered for high wind resistance,
+            corrosion protection, and long-term durability.
+          </p>
+        </div>
       </div>
+      
     </section>
+
+    <!-- SOLAR LOAD CALCULATOR -->
+    <div class="solar-calculator">
+      <h3><i class="fa fa-calculator"></i> Solar Load Calculator</h3>
+
+      <label>Monthly Electricity Units (kWh)</label>
+      <input type="number" id="units" placeholder="Example: 300" />
+
+      <label>Average Sun Hours</label>
+      <select id="sunHours">
+        <option value="4">4 Hours</option>
+        <option value="5" selected>5 Hours</option>
+        <option value="6">6 Hours</option>
+      </select>
+
+      <button type="button" onclick="calculateSolar()">
+        <i class="fa fa-sun"></i> Calculate Solar Capacity
+      </button>
+
+      <div id="result" class="calc-result"></div>
+
+      <div class="calc-note">* Calculation based on 75% system efficiency</div>
+
+      <hr />
+    </div>
 
     <!-- CONTACT (FROM YOUR CODE, ENHANCED) -->
     <section id="contact">
@@ -379,6 +493,29 @@
     <footer>© 2025 Sky Tech | All Rights Reserved</footer>
 
     <script>
+      function calculateSolar() {
+        const units = document.getElementById('units').value;
+        const sunHours = document.getElementById('sunHours').value;
+        const efficiency = 0.75;
+
+        if (!units || units <= 0) {
+          document.getElementById('result').innerHTML =
+            "<span style='color:#ff6b6b'>Please enter valid monthly units</span>";
+          return;
+        }
+
+        const dailyLoad = units / 30;
+        const solarSize = dailyLoad / (sunHours * efficiency);
+
+        document.getElementById('result').innerHTML = `
+      <div>⚡ Daily Energy Consumption</div>
+      <span>${dailyLoad.toFixed(2)} kWh / day</span>
+      <hr style="margin:10px 0;border-color:#223" />
+      <div>☀ Recommended Solar Plant Size</div>
+      <span>${solarSize.toFixed(2)} kW</span>
+    `;
+      }
+
       function toggleMenu() {
         document.getElementById('nav').classList.toggle('active');
       }
