@@ -17,6 +17,19 @@
         box-sizing: border-box;
         font-family: Poppins, sans-serif;
       }
+      html {
+  scroll-behavior: smooth;
+}
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 110px;
+  }
+}
+/* FIX SCROLL POSITION FOR STICKY HEADER */
+section {
+  scroll-margin-top: 90px; /* height of header */
+}
+
       body {
         background: #111;
         color: #eee;
