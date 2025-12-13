@@ -324,6 +324,42 @@
         margin-top: 25px;
         border-color: #222;
       }
+
+      /* CALCULATOR CARD WRAPPER */
+.calculator-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+/* SOLAR CALCULATOR AS CARD */
+.solar-calculator {
+  width: 100%;
+  max-width: 520px; /* desktop card width */
+  background: linear-gradient(135deg, #111, #1b1b1b);
+  border: 1px solid #222;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 600px) {
+  .solar-calculator {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .solar-calculator h3 {
+    font-size: 18px;
+  }
+
+  .solar-calculator button {
+    font-size: 15px;
+    padding: 13px;
+  }
+}
+
     </style>
   </head>
 
@@ -586,29 +622,36 @@
  
 
     <!-- SOLAR LOAD CALCULATOR -->
-    <div class="solar-calculator">
-      <h3><i class="fa fa-calculator"></i> Solar Load Calculator</h3>
-
-      <label>Monthly Electricity Units (kWh)</label>
-      <input type="number" id="units" placeholder="Example: 300" />
-
-      <label>Average Sun Hours</label>
-      <select id="sunHours">
-        <option value="4">4 Hours</option>
-        <option value="5" selected>5 Hours</option>
-        <option value="6">6 Hours</option>
-      </select>
-
-      <button type="button" onclick="calculateSolar()">
-        <i class="fa fa-sun"></i> Calculate Solar Capacity
-      </button>
-
-      <div id="result" class="calc-result"></div>
-
-      <div class="calc-note">* Calculation based on 75% system efficiency</div>
-
-      <hr />
+    <section id="calculator">
+    <h2 class="section-title">Solar Load Calculator</h2>
+  
+    <div class="calculator-wrapper">
+      <div class="solar-calculator">
+        <h3><i class="fa fa-calculator"></i> Calculate Your Solar Requirement</h3>
+  
+        <label>Monthly Electricity Units (kWh)</label>
+        <input type="number" id="units" placeholder="Example: 300" />
+  
+        <label>Average Sun Hours</label>
+        <select id="sunHours">
+          <option value="4">4 Hours</option>
+          <option value="5" selected>5 Hours</option>
+          <option value="6">6 Hours</option>
+        </select>
+  
+        <button type="button" onclick="calculateSolar()">
+          <i class="fa fa-sun"></i> Calculate Solar Capacity
+        </button>
+  
+        <div id="result" class="calc-result"></div>
+  
+        <div class="calc-note">
+          * Calculation based on 75% system efficiency
+        </div>
+      </div>
     </div>
+  </section>
+  
 
     
   
