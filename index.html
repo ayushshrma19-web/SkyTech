@@ -37,7 +37,7 @@ section {
 
       /* HEADER */
       header {
-        background: #000;
+        background: #458B00;
         padding: 15px 20px;
         display: flex;
         justify-content: space-between;
@@ -49,115 +49,68 @@ section {
       header h1 {
         font-size: 22px;
       }
-      nav {
-  display: flex;
-  flex-wrap: wrap;              /* ✅ allow next line */
-  gap: 10px 18px;               /* row gap | column gap */
-  justify-content: flex-end;    /* align nicely to right */
-  max-width: 700px;             /* control wrapping width */
+     /* HAMBURGER ICON */
+.menu-toggle {
+  font-size: 26px;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
+/* Highlight hamburger when menu is open */
+.menu-toggle.active {
+  background: #ffffff;
+  color: #458B00;
+}
+
+/* NAV MENU */
+nav {
+  position: absolute;
+  top: 70px;
+  right: 15px;
+  background: #0f0f0f;
+  width: 260px;
+  display: none;
+  flex-direction: column;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+nav.active {
+  display: flex;
+}
+
+/* NAV ITEMS */
 nav a {
-  position: relative;
-  padding: 10px 16px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 14px 16px;
+  border-radius: 10px;
   color: #e6f1ff;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px;
-
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
-  );
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 6px 14px rgba(0, 0, 0, 0.35);
-
+  gap: 12px;
+  font-size: 15px;
   transition: all 0.3s ease;
 }
+
+/* Hover highlight */
 nav a:hover {
-  color: #00eaff;
-  background: linear-gradient(
-    145deg,
-    rgba(0, 234, 255, 0.25),
-    rgba(0, 234, 255, 0.08)
-  );
-  transform: translateY(-2px);
-  box-shadow:
-    0 8px 20px rgba(0, 234, 255, 0.35),
-    inset 0 0 0 1px rgba(0, 234, 255, 0.35);
+  background: rgba(69, 139, 0, 0.25);
+  color: #9aff57;
 }
+
+/* ACTIVE (clicked) ITEM */
 nav a.active {
-  color: #00ff99;
-  background: linear-gradient(
-    145deg,
-    rgba(0, 255, 153, 0.35),
-    rgba(0, 255, 153, 0.12)
-  );
-  box-shadow:
-    0 10px 24px rgba(0, 255, 153, 0.4),
-    inset 0 0 0 1px rgba(0, 255, 153, 0.45);
+  background: linear-gradient(135deg, #458B00, #7ED321);
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(69, 139, 0, 0.6);
 }
 
-nav a i {
-  font-size: 15px;
-  opacity: 0.9;
-}
-
-      .menu-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-      }
-
-      @media (max-width: 768px) {
-        nav {
-          position: absolute;
-          top: 60px;
-          right: 0;
-          background: #000;
-          flex-direction: column;
-          width: 240px;
-          display: none;
-          border-left: 1px solid #222;
-        }
-        nav.active {
-          display: flex;
-        }
-        nav a {
-          border-bottom: 1px solid #222;
-        }
-        .menu-toggle {
-          display: block;
-        }
-      }
-      @media (min-width: 1200px) {
-  nav {
-    max-width: 800px;
-  }
-}
-
-@media (min-width: 1024px) {
-  nav {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 14px 18px;
-    max-width: 900px;
-    justify-items: center;
-    align-items: center;
-  }
-
-  nav a {
-    width: 100%;
-    justify-content: center;
-  }
-}
 
 
       /* HERO */
@@ -181,7 +134,7 @@ nav a i {
       .btn {
         display: inline-block;
         margin-top: 20px;
-        background: lightblue;
+        background: #458B00;
         color: #000;
         padding: 12px 25px;
         border-radius: 6px;
@@ -193,11 +146,13 @@ nav a i {
       section {
         padding: 70px 20px;
         text-align: center;
+        background:#FFFFF0;
       }
       .section-title {
-        color: lightblue;
+        color: white;
         margin-bottom: 25px;
         font-size: 2.2rem;
+        color:black;
       }
 
       /* GRID FIX */
@@ -223,12 +178,12 @@ nav a i {
 }
 
 .card:hover {
-  border-color: lightblue;
+  border-color: white;
   transform: translateY(-4px);
 }
 
 .card h3 {
-  color: lightblue;
+  color: white;
   margin-bottom: 10px;
 }
 
@@ -279,7 +234,7 @@ nav a i {
       }
       .about-item i {
         font-size: 30px;
-        color: lightblue;
+        color: white;
         margin-bottom: 10px;
       }
 
@@ -318,7 +273,7 @@ nav a i {
         background: #25d366;
       }
       .call {
-        background: lightblue;
+        background: white;
       }
 
       /* FOOTER */
@@ -340,7 +295,7 @@ nav a i {
       }
 
       .solar-calculator h3 {
-        color: lightblue;
+        color: white;
         margin-bottom: 20px;
         text-align: center;
       }
@@ -366,7 +321,7 @@ nav a i {
         padding: 14px;
         border-radius: 10px;
         border: none;
-        background: lightblue;
+        background: white;
         color: #000;
         font-weight: 700;
         cursor: pointer;
@@ -387,7 +342,7 @@ nav a i {
       }
 
       .calc-result span {
-        color: lightblue;
+        color: white;
         font-size: 18px;
         font-weight: 700;
       }
@@ -527,7 +482,7 @@ nav a i {
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.6);
   border: none;
-  color: lightblue;
+  color: white;
   font-size: 20px;
   padding: 10px 14px;
   cursor: pointer;
@@ -552,50 +507,47 @@ nav a i {
 }
 
 
-
     </style>
   </head>
 
   <body>
   <header>
   <div class="logo-box">
-    <img src="Logo.jpeg" alt="Sky Tech Power Solutions Logo" />
-    <h1>Sky Tech Power Solutions</h1>
-  </div>
-      <i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
-      <nav id="nav">
-      <a href="#home" class="active" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-house"></i> Home
-      </a>
-    
-      <a href="#about" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-circle-info"></i> About
-      </a>
-    
-      <a href="#services" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-solar-panel"></i> Services
-      </a>
-    
-      <a href="#products" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-box"></i> Products
-      </a>
-    
-      <a href="#site-gallery" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-images"></i> Site Installations
-      </a>
-    
-      <a href="#hybrid-inverter" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-plug"></i> Hybrid Inverter
-      </a>
-    
-      <a href="#calculator" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-calculator"></i> Solar Calculator
-      </a>
-    
-      <a href="#contact" onclick="setActive(this); closeMenu()">
-        <i class="fa fa-phone"></i> Contact
-      </a>
-    </nav>
+  <img src="Logo.jpeg" alt="Sky Tech Power Solutions Logo" />
+  <h1>Sky Tech Power Solutions</h1>
+</div>
+<i class="fa fa-bars menu-toggle" onclick="toggleMenu()"></i>
+<nav id="nav">
+<a href="#home" class="active" onclick="setActive(this)">
+  <i class="fa fa-house"></i> Home
+</a>
+
+<a href="#about" onclick="setActive(this)">
+  <i class="fa fa-circle-info"></i> About
+</a>
+
+<a href="#services" onclick="setActive(this)">
+  <i class="fa fa-solar-panel"></i> Services
+</a>
+
+<a href="#products" onclick="setActive(this)">
+  <i class="fa fa-box"></i> Products
+</a>
+
+<a href="#site-gallery" onclick="setActive(this)">
+  <i class="fa fa-images"></i> Site Installations
+</a>
+
+<a href="#calculator" onclick="setActive(this)">
+  <i class="fa fa-calculator"></i> Solar Calculator
+</a>
+
+<a href="#contact" onclick="setActive(this)">
+  <i class="fa fa-phone"></i> Contact
+</a>
+</nav>
+
+
     
     
     </header>
@@ -644,7 +596,7 @@ nav a i {
     <div class="grid">
   
       <!-- Solar System Design -->
-      <div class="card" data-group="services" onclick="toggleCard(this)">
+      <div class="card active" data-group="services" onclick="toggleCard(this)">
         <h3>Solar System Design & Consultation</h3>
         <div class="card-content">
           <img
@@ -660,7 +612,7 @@ nav a i {
       </div>
   
       <!-- Solar Installation -->
-      <div class="card" data-group="services" onclick="toggleCard(this)">
+      <div class="card active" data-group="services" onclick="toggleCard(this)">
         <h3>Solar Panel Installation</h3>
         <div class="card-content">
         <img src="https://images.pexels.com/photos/9875414/pexels-photo-9875414.jpeg" alt="Residential Solar Installation">
@@ -676,7 +628,7 @@ nav a i {
       </div>
   
       <!-- Inverters & Batteries -->
-      <div class="card" data-group="services" onclick="toggleCard(this)">
+      <div class="card active" data-group="services" onclick="toggleCard(this)">
         <h3>Solar Inverters & Batteries</h3>
         <div class="card-content">
         <img
@@ -694,7 +646,7 @@ nav a i {
       </div>
   
       <!-- O&M -->
-      <div class="card" data-group="services" onclick="toggleCard(this)">
+      <div class="card active" data-group="services" onclick="toggleCard(this)">
         <h3>Operation & Maintenance (O&M)</h3>
         <div class="card-content">
           <img
@@ -717,7 +669,7 @@ nav a i {
     <section id="products">
       <h2 class="section-title">Our Products</h2>
       <div class="grid">
-        <div class="card" data-group="products" onclick="toggleCard(this)">
+        <div class="card active" data-group="products" onclick="toggleCard(this)">
           <h3>Solar PV Panels</h3>
           <div class="card-content">
             <img
@@ -727,7 +679,7 @@ nav a i {
           </div>
         </div>
 
-        <div class="card" data-group="products" onclick="toggleCard(this)">
+        <div class="card active" data-group="products" onclick="toggleCard(this)">
           <h3>Solar Inverters</h3>
           <div class="card-content">
             <img
@@ -737,7 +689,7 @@ nav a i {
           </div>
         </div>
 
-        <div class="card" data-group="products" onclick="toggleCard(this)">
+        <div class="card active" data-group="products" onclick="toggleCard(this)">
           <h3>Solar Batteries</h3>
           <div class="card-content">
             <img
@@ -747,7 +699,7 @@ nav a i {
           </div>
         </div>
 
-        <div class="card" data-group="products" onclick="toggleCard(this)">
+        <div class="card active" data-group="products" onclick="toggleCard(this)">
         <h3>Solar Lights</h3>
         <div class="card-content">
         <img
@@ -763,7 +715,7 @@ nav a i {
         </div>
       </div>
 
-      <div class="card" data-group="products" onclick="toggleCard(this)">
+      <div class="card active" data-group="products" onclick="toggleCard(this)">
       <h3>Solar Water Heaters </h3>
       <div class="card-content">
         <img
@@ -798,53 +750,6 @@ nav a i {
       </button>
     </div>
   </section>
-  
-
-  <section id="hybrid-inverter">
-  <h2 class="section-title">Working of Hybrid Solar Inverter</h2>
-
-  <div class="about-box">
-    <img
-      src="workingModel.jpeg"
-      alt="Hybrid Solar Inverter Working"
-      style="
-        width: 100%;
-        border-radius: 12px;
-        margin-bottom: 25px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      "
-    />
-
-    <p style="line-height: 1.8; text-align: left">
-      A <b>Hybrid Solar Inverter</b> intelligently manages power from
-      <b>solar panels, batteries, and the grid</b>. It ensures uninterrupted
-      electricity by automatically switching between available power sources.
-    </p>
-
-    <br />
-
-    <p style="line-height: 1.8; text-align: left">
-      ☀ <b>Daytime:</b> Solar panels generate electricity. The inverter supplies
-      power to your appliances and charges the battery with excess energy.
-    </p>
-
-    <p style="line-height: 1.8; text-align: left">
-      🔋 <b>Battery Mode:</b> Stored energy in the battery is used during power
-      cuts or at night.
-    </p>
-
-    <p style="line-height: 1.8; text-align: left">
-      ⚡ <b>Grid Support:</b> If solar and battery power are insufficient, the
-      inverter automatically draws electricity from the grid.
-    </p>
-
-    <p style="line-height: 1.8; text-align: left">
-      🔁 <b>Smart Switching:</b> The system prioritizes solar energy first,
-      reducing electricity bills and maximizing energy efficiency.
-    </p>
-  </div>
-</section>
- 
 
     <!-- SOLAR LOAD CALCULATOR -->
     <section id="calculator">
@@ -903,6 +808,18 @@ nav a i {
     </div> -->
       </div>
     </section>
+    
+    <section>
+    <h2 class="section-title">Address</h2>
+    <div class="contact-box">
+      <p>
+      Office Address:-1295, Meerut Road, Morta, Ghaziabad, Uttarpradesh-201003
+      Contact No:-9217221551
+      Email :- skytechpower8@gmail.com
+      </p>
+    </div>
+
+    </section>
 
     <footer>Clean Energy. Smart Investment. Brighter Tomorrow</footer>
 
@@ -931,32 +848,48 @@ nav a i {
       }
 
       function toggleMenu() {
-        document.getElementById('nav').classList.toggle('active');
-      }
-      function closeMenu() {
-        document.getElementById('nav').classList.remove('active');
-      }
-      function toggleCard(selected) {
-  const group = selected.getAttribute('data-group');
+  const nav = document.getElementById("nav");
+  const menuIcon = document.querySelector(".menu-toggle");
 
-  document
-    .querySelectorAll(`.card[data-group="${group}"]`)
-    .forEach((card) => {
-      if (card !== selected) card.classList.remove('active');
-    });
-
-  selected.classList.toggle('active');
+  nav.classList.toggle("active");
+  menuIcon.classList.toggle("active");
 }
 
 function setActive(clickedLink) {
-    const navLinks = document.querySelectorAll("#nav a");
+  const navLinks = document.querySelectorAll("#nav a");
 
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-    });
+  navLinks.forEach(link => link.classList.remove("active"));
+  clickedLink.classList.add("active");
 
-    clickedLink.classList.add("active");
-  }
+  // Close menu after click
+  document.getElementById("nav").classList.remove("active");
+  document.querySelector(".menu-toggle").classList.remove("active");
+}
+
+      function closeMenu() {
+        document.getElementById('nav').classList.remove('active');
+      }
+      function toggleMenu() {
+  const nav = document.getElementById("nav");
+  const menuIcon = document.querySelector(".menu-toggle");
+
+  nav.classList.toggle("active");
+  menuIcon.classList.toggle("active");
+}
+
+function setActive(clickedLink) {
+  // Highlight clicked item
+  document.querySelectorAll("#nav a").forEach(link => {
+    link.classList.remove("active");
+  });
+  clickedLink.classList.add("active");
+
+  // CLOSE MENU automatically
+  document.getElementById("nav").classList.remove("active");
+  document.querySelector(".menu-toggle").classList.remove("active");
+}
+
+
 
 let currentIndex = 0;
 
@@ -992,6 +925,15 @@ let currentIndex = 0;
   window.addEventListener("resize", () => {
     currentIndex = 0;
     updateCarousel();
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const groups = ["services", "products"];
+
+    groups.forEach(group => {
+      const firstCard = document.querySelector(`.card[data-group="${group}"]`);
+      if (firstCard) firstCard.classList.add("active");
+    });
   });
 
     </script>
