@@ -23,7 +23,6 @@
       color: #eee;
     }
 
-    /* ================= HEADER ================= */
     header {
       background: #000;
       padding: 15px 20px;
@@ -59,7 +58,6 @@
       color: lightblue;
     }
 
-    /* ===== Mobile Menu ===== */
     .menu-toggle {
       display: none;
       font-size: 24px;
@@ -77,21 +75,17 @@
         display: none;
         border-left: 1px solid #222;
       }
-
       nav.active {
         display: flex;
       }
-
       nav a {
         border-bottom: 1px solid #222;
       }
-
       .menu-toggle {
         display: block;
       }
     }
 
-    /* ================= HERO ================= */
     .hero {
       height: 90vh;
       background: linear-gradient(rgba(0,0,0,.6), #111),
@@ -123,7 +117,6 @@
       text-decoration: none;
     }
 
-    /* ================= SECTIONS ================= */
     section {
       padding: 60px 20px;
       text-align: center;
@@ -135,15 +128,15 @@
       font-size: 2.2rem;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: auto;
-    }
+    ..grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+  align-items: start; /* ✅ IMPORTANT FIX */
+}
 
-    /* ================= CARD ================= */
     .card {
       background: #1b1b1b;
       padding: 20px;
@@ -177,7 +170,6 @@
       margin-bottom: 10px;
     }
 
-    /* ================= FORM ================= */
     form {
       max-width: 500px;
       margin: auto;
@@ -192,7 +184,6 @@
       border: none;
     }
 
-    /* ================= FOOTER ================= */
     footer {
       background: #000;
       padding: 20px;
@@ -235,7 +226,7 @@
   <h2 class="section-title">Our Services</h2>
   <div class="grid">
 
-    <div class="card" onclick="toggleCard(this)">
+    <div class="card" data-group="services" onclick="toggleCard(this)">
       <h3>Solar Installation</h3>
       <div class="card-content">
         <img src="https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg">
@@ -243,7 +234,7 @@
       </div>
     </div>
 
-    <div class="card" onclick="toggleCard(this)">
+    <div class="card" data-group="services" onclick="toggleCard(this)">
       <h3>Monitoring</h3>
       <div class="card-content">
         <img src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg">
@@ -259,7 +250,7 @@
 
   <div class="grid">
 
-    <div class="card" onclick="toggleCard(this)">
+    <div class="card" data-group="products" onclick="toggleCard(this)">
       <h3>Solar Panels</h3>
       <div class="card-content">
         <img src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg">
@@ -267,7 +258,7 @@
       </div>
     </div>
 
-    <div class="card" onclick="toggleCard(this)">
+    <div class="card" data-group="products" onclick="toggleCard(this)">
       <h3>Solar Inverters</h3>
       <div class="card-content">
         <img src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg">
@@ -275,7 +266,7 @@
       </div>
     </div>
 
-    <div class="card" onclick="toggleCard(this)">
+    <div class="card" data-group="products" onclick="toggleCard(this)">
       <h3>Solar Batteries</h3>
       <div class="card-content">
         <img src="https://images.pexels.com/photos/4492135/pexels-photo-4492135.jpeg">
@@ -308,8 +299,18 @@
     document.getElementById("nav").classList.remove("active");
   }
 
-  function toggleCard(card) {
-    card.classList.toggle("active");
+  function toggleCard(selectedCard) {
+    const group = selectedCard.getAttribute("data-group");
+
+    document
+      .querySelectorAll(`.card[data-group="${group}"]`)
+      .forEach(card => {
+        if (card !== selectedCard) {
+          card.classList.remove("active");
+        }
+      });
+
+    selectedCard.classList.toggle("active");
   }
 </script>
 
