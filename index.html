@@ -167,24 +167,46 @@ nav a.active {
 
       /* CARD */
      /* CARD */
-.card {
-  background: #1b1b1b;
-  padding: 20px;
-  border-radius: 12px;
+     .card {
+  background: linear-gradient(180deg, #1b1b1b, #141414);
+  padding: 22px;
+  border-radius: 16px;
   cursor: pointer;
   border: 1px solid #222;
-  transition: border 0.3s ease, transform 0.3s ease;
+  transition: all 0.35s ease;
   overflow: hidden;
+  position: relative;
+}
+
+/* TOP ACCENT LINE */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #458B00, #9aff57);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card:hover::before,
+.card.active::before {
+  opacity: 1;
 }
 
 .card:hover {
-  border-color: white;
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+  border-color: #458B00;
 }
 
 .card h3 {
-  color: white;
-  margin-bottom: 10px;
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-size: 17px;
+  letter-spacing: 0.4px;
 }
 
 /* CONTENT CLOSED BY DEFAULT */
@@ -192,24 +214,38 @@ nav a.active {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: all 0.45s ease;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
 }
 
-/* OPEN STATE */
 .card.active .card-content {
-  max-height: 900px;
+  max-height: 700px;
   opacity: 1;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 /* IMAGE */
+/* PREMIUM IMAGE STYLE */
 .card img {
   width: 100%;
-  height: 180px; /* SAME IMAGE HEIGHT */
+  height: 240px;          /* ⬆ Increased height */
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease;
 }
+
+/* IMAGE ZOOM ON HOVER */
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* IMAGE ZOOM ON HOVER */
+@media (max-width: 600px) {
+  .card img {
+    height: 200px;
+  }
+}
+
 
 /* TEXT */
 .card-content p {
@@ -598,7 +634,7 @@ nav a.active {
     <div class="grid">
   
       <!-- Solar System Design -->
-      <div class="card active" data-group="services" onclick="toggleCard(this)">
+      <div class="card active card-badge" data-group="services" onclick="toggleCard(this)">
         <h3>Solar System Design & Consultation</h3>
         <div class="card-content">
           <img
