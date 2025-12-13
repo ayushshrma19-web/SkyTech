@@ -132,33 +132,56 @@
       }
 
       /* CARD */
-      .card {
-        background: #1b1b1b;
-        padding: 20px;
-        border-radius: 12px;
-        cursor: pointer;
-        border: 1px solid #222;
-        transition: 0.3s;
-      }
-      .card:hover {
-        border-color: lightblue;
-      }
-      .card h3 {
-        color: lightblue;
-        margin-bottom: 10px;
-      }
-      .card-content {
-        display: none;
-        margin-top: 15px;
-      }
-      .card.active .card-content {
-        display: block;
-      }
-      .card img {
-        width: 100%;
-        border-radius: 10px;
-        margin-bottom: 10px;
-      }
+     /* CARD */
+.card {
+  background: #1b1b1b;
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid #222;
+  transition: border 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: lightblue;
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  color: lightblue;
+  margin-bottom: 10px;
+}
+
+/* CONTENT CLOSED BY DEFAULT */
+.card-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.45s ease;
+}
+
+/* OPEN STATE */
+.card.active .card-content {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 12px;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.card-content p {
+  text-align: left;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
 
       /* ABOUT */
       .about-box {
@@ -341,8 +364,7 @@
       <h2 class="section-title">About Us</h2>
       <div class="about-box">
         <p>
-          We provide residential & commercial solar power solutions with high
-          efficiency systems.
+        Skytech Power Solutions specializes in the installation, maintenance, and supply of on-grid, off-grid, and hybrid power systems, delivering reliable, sustainable, and cost-effective energy solutions.
         </p>
 
         <div class="about-features">
@@ -367,29 +389,79 @@
 
     <!-- SERVICES -->
     <section id="services">
-      <h2 class="section-title">Our Services</h2>
-      <div class="grid">
-        <div class="card" data-group="services" onclick="toggleCard(this)">
-          <h3>Solar Installation</h3>
-          <div class="card-content">
-            <img
-              src="https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg"
-            />
-            <p>Complete rooftop & ground mounted installations.</p>
-          </div>
-        </div>
-
-        <div class="card" data-group="services" onclick="toggleCard(this)">
-          <h3>Monitoring</h3>
-          <div class="card-content">
-            <img
-              src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg"
-            />
-            <p>Remote monitoring & performance analytics.</p>
-          </div>
+    <h2 class="section-title">Our Services</h2>
+  
+    <div class="grid">
+  
+      <!-- Solar System Design -->
+      <div class="card" data-group="services" onclick="toggleCard(this)">
+        <h3>Solar System Design & Consultation</h3>
+        <div class="card-content">
+          <img
+            src="systemDesign.png"
+            alt="Solar system design"
+          />
+          <p>
+            • Site assessment & energy requirement analysis<br />
+            • Customized system design (on-grid, off-grid, hybrid)<br />
+            • Feasibility study & ROI estimation
+          </p>
         </div>
       </div>
-    </section>
+  
+      <!-- Solar Installation -->
+      <div class="card" data-group="services" onclick="toggleCard(this)">
+        <h3>Solar Panel Installation</h3>
+        <div class="card-content">
+        <img src="https://images.pexels.com/photos/9875414/pexels-photo-9875414.jpeg" alt="Residential Solar Installation">
+
+
+          <p>
+            • Residential solar installations<br />
+            • Commercial & industrial projects<br />
+            • Rooftop & ground-mounted systems<br />
+            • Certified installation & quality panels
+          </p>
+        </div>
+      </div>
+  
+      <!-- Inverters & Batteries -->
+      <div class="card" data-group="services" onclick="toggleCard(this)">
+        <h3>Solar Inverters & Batteries</h3>
+        <div class="card-content">
+        <img
+        src="solarInverterBatteries.jpeg"
+        alt="Solar Battery and Inverter System"
+        class="card-image"
+      />
+
+          <p>
+            • Supply & installation of solar inverters<br />
+            • Battery storage for backup power<br />
+            • Complete system integration & optimization
+          </p>
+        </div>
+      </div>
+  
+      <!-- O&M -->
+      <div class="card" data-group="services" onclick="toggleCard(this)">
+        <h3>Operation & Maintenance (O&M)</h3>
+        <div class="card-content">
+          <img
+            src="operationAndMaintaence.png"
+            alt="Solar maintenance"
+          />
+          <p>
+            • Routine inspection & panel cleaning<br />
+            • Performance monitoring & troubleshooting<br />
+            • Repair, replacement & support services
+          </p>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
 
     <!-- PRODUCTS -->
     <section id="products">
@@ -401,7 +473,7 @@
             <img
               src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg"
             />
-            <p>High efficiency PV modules – Adani, Waaree, Tata, Vikram.</p>
+            <p>High-efficiency, long-lasting panels</p>
           </div>
         </div>
 
@@ -409,9 +481,9 @@
           <h3>Solar Inverters</h3>
           <div class="card-content">
             <img
-              src="https://images.pexels.com/photos/8293656/pexels-photo-8293656.jpeg"
+              src="inverter.jpeg"
             />
-            <p>On-grid & off-grid inverters – Luminous, Microtek, Havells.</p>
+            <p>Smart, reliable power conversion</p>
           </div>
         </div>
 
@@ -421,24 +493,38 @@
             <img
               src="https://images.pexels.com/photos/4492135/pexels-photo-4492135.jpeg"
             />
-            <p>Long backup tubular batteries – Exide, Okaya, Amaron.</p>
+            <p> Energy storage for day & night use</p>
           </div>
         </div>
 
         <div class="card" data-group="products" onclick="toggleCard(this)">
-        <h3>Solar Structures</h3>
+        <h3>Solar Lights</h3>
         <div class="card-content">
-          <img
-            src="https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg"
-            alt="Solar Mounting Structures"
-          />
+        <img
+        src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg"
+        alt="Commercial Solar Lights"
+      />
+      
+      
+      
           <p>
-            Robust GI & aluminum mounting structures designed for rooftop and
-            ground-mounted solar plants. Engineered for high wind resistance,
-            corrosion protection, and long-term durability.
+          Indoor & outdoor solar lighting
           </p>
         </div>
       </div>
+
+      <div class="card" data-group="products" onclick="toggleCard(this)">
+      <h3>Solar Water Heaters </h3>
+      <div class="card-content">
+        <img
+          src="https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg"
+          alt="Solar Mounting Structures"
+        />
+        <p>
+        Eco-friendly hot water solutions
+        </p>
+      </div>
+    </div>
       
     </section>
 
@@ -467,6 +553,18 @@
       <hr />
     </div>
 
+    <section class="site-gallery">
+    <h2>Our Site Installations</h2>
+  
+    <div class="gallery-grid">
+      <img src="images/site1.jpg" alt="Solar site installation 1">
+      <img src="images/site2.jpg" alt="Solar site installation 2">
+      <img src="images/site3.jpg" alt="Solar site installation 3">
+      <img src="images/site4.jpg" alt="Solar site installation 4">
+    </div>
+  </section>
+  
+
     <!-- CONTACT (FROM YOUR CODE, ENHANCED) -->
     <section id="contact">
       <h2 class="section-title">Get a Quote</h2>
@@ -490,7 +588,7 @@
       </div>
     </section>
 
-    <footer>© 2025 Sky Tech | All Rights Reserved</footer>
+    <footer>Clean Energy. Smart Investment. Brighter Tomorrow</footer>
 
     <script>
       function calculateSolar() {
@@ -523,14 +621,16 @@
         document.getElementById('nav').classList.remove('active');
       }
       function toggleCard(selected) {
-        const group = selected.getAttribute('data-group');
-        document
-          .querySelectorAll(`.card[data-group="${group}"]`)
-          .forEach((card) => {
-            if (card !== selected) card.classList.remove('active');
-          });
-        selected.classList.toggle('active');
-      }
+  const group = selected.getAttribute('data-group');
+
+  document
+    .querySelectorAll(`.card[data-group="${group}"]`)
+    .forEach((card) => {
+      if (card !== selected) card.classList.remove('active');
+    });
+
+  selected.classList.toggle('active');
+}
     </script>
   </body>
 </html>
