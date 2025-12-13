@@ -37,9 +37,13 @@
         font-size: 22px;
       }
       nav {
-        display: flex;
-        gap: 20px;
-      }
+  display: flex;
+  flex-wrap: wrap;              /* ✅ allow next line */
+  gap: 10px 18px;               /* row gap | column gap */
+  justify-content: flex-end;    /* align nicely to right */
+  max-width: 700px;             /* control wrapping width */
+}
+
       nav a {
         color: #eee;
         text-decoration: none;
@@ -80,6 +84,12 @@
           display: block;
         }
       }
+      @media (min-width: 1200px) {
+  nav {
+    max-width: 800px;
+  }
+}
+
 
       /* HERO */
       .hero {
@@ -907,4 +917,3 @@ let currentIndex = 0;
     </script>
   </body>
 </html>
-
