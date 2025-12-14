@@ -149,11 +149,25 @@ nav a.active {
         background:#FFFFF0;
       }
       .section-title {
-        color: white;
-        margin-bottom: 25px;
-        font-size: 2.2rem;
-        color:black;
-      }
+  font-size: 2.6rem;
+  font-weight: 800;           /* EXTRA BOLD */
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  color: #000;
+  position: relative;
+}
+
+/* UNDERLINE ACCENT */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #458B00, #9aff57);
+  margin: 12px auto 0;
+  border-radius: 4px;
+}
 
       /* GRID FIX */
       .grid {
@@ -171,7 +185,7 @@ nav a.active {
   background: linear-gradient(180deg, #1b1b1b, #141414);
   padding: 22px;
   border-radius: 16px;
-  cursor: pointer;
+  /* cursor: pointer; */
   border: 1px solid #222;
   transition: all 0.35s ease;
   overflow: hidden;
